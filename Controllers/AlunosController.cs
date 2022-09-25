@@ -10,13 +10,15 @@ namespace WebServiceRestfull.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        // GET: api/<AlunosController>
+        private static List<Aluno> alunos;
+
         [HttpGet]
         public IActionResult Get()
         {
-            List<Aluno> alunos = new List<Aluno>
+            alunos = new List<Aluno>
             {
-                new Aluno("Luana", 25, 1.7, 110.0, Genero.Feminino)
+                new Aluno("Luana", 25, 1.7, 110.0, Genero.Feminino),
+                new Aluno("Luana", 19, 1.56, 48.5, Genero.Masculino)
             };
 
             return Ok(alunos);
