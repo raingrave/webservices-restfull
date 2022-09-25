@@ -1,6 +1,6 @@
 ﻿using System.Reflection.PortableExecutable;
 
-namespace WebServiceRestfull.Models
+namespace WebServiceRestfull.Entities
 {
     public class Aluno
     {

@@ -1,6 +1,7 @@
-﻿namespace WebServiceRestfull.Models
+﻿namespace WebServiceRestfull.Entities
+
 {
-    public class Recompensas
+    public class Recompensa
     {
         public string ExercicioRealizado { get; set; }
         public int IdRecompensa { get; set; }
