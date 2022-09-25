@@ -224,23 +224,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\raint\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\vitor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\raint\\source\\repos\\WebServiceRestfull\\WebServiceRestfull.csproj",
+      "projectUniqueName": "C:\\Users\\vitor\\Source\\Repos\\webservices-restfull\\WebServiceRestfull.csproj",
       "projectName": "WebServiceRestfull",
-      "projectPath": "C:\\Users\\raint\\source\\repos\\WebServiceRestfull\\WebServiceRestfull.csproj",
-      "packagesPath": "C:\\Users\\raint\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\raint\\source\\repos\\WebServiceRestfull\\obj\\",
+      "projectPath": "C:\\Users\\vitor\\Source\\Repos\\webservices-restfull\\WebServiceRestfull.csproj",
+      "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vitor\\Source\\Repos\\webservices-restfull\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\raint\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
