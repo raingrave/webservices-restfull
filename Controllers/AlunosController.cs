@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebServiceRestfull.Entities;
+using WebServiceRestfull.Enums;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,17 +12,14 @@ namespace WebServiceRestfull.Controllers
     {
         // GET: api/<AlunosController>
         [HttpGet]
-        public IEnumerable<Aluno> Get()
+        public IActionResult Get()
         {
             List<Aluno> alunos = new List<Aluno>
             {
-                new Aluno("Luana", 25),
-                new Aluno("João", 41)
+                new Aluno("Luana", 25, 1.7, 110.0, Genero.Feminino)
             };
 
-            alunos.Add(new Aluno("Luana", 25));
-
-            return alunos;
+            return Ok(alunos);
         }
 
         // GET api/<AlunosController>/5
