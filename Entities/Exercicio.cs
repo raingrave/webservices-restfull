@@ -8,7 +8,7 @@
         public string DescricaoExercicio { set; get; }
         public DateTime RegistroExercicio { set; get; }
         
-        public void CadastrarExercicio (string nome,string descricao, DateTime registro)
+        public  Exercicio (string nome,string descricao, DateTime registro)
         {
             this.NomeExercicio = nome; 
             this.DescricaoExercicio = descricao;
