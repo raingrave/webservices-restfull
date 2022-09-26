@@ -9,43 +9,71 @@ namespace WebServiceRestfull.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private static List<Aluno> alunos;
+        private AlunoContext _context;
+
+        public AlunosController()
+        {
+            _context = new AlunoContext();
+        }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult FindAll()
         {
-            AlunoContext alunoContext = new AlunoContext();
-
-            alunos = alunoContext.Aluno.ToList<Aluno>();
-
-            return Ok(alunos);
+            return Ok(_context.Alunos);
         }
 
-        // GET api/<AlunosController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult FindById(int id)
         {
+            Aluno aluno = _context.Alunos.FirstOrDefault(aluno => aluno.Id == id);
 
+            if (aluno != null)
+            {
+                return Ok(aluno);
+            }
 
-            return "value";
+            return NotFound();
         }
 
-        // POST api/<AlunosController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Create([FromBody] Aluno aluno)
         {
+            _context.Alunos.Add(aluno);
+
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(FindById), new { Id = aluno.Id }, aluno);
         }
 
-        // PUT api/<AlunosController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Update(int id, [FromBody] Aluno aluno)
         {
+            Aluno alunoRecuperado = _context.Alunos.FirstOrDefault(aluno => aluno.Id == id);
+
+            if (alunoRecuperado != null)
+            {
+                alunoRecuperado.Nome = aluno.Nome;
+                alunoRecuperado.Idade = aluno.Idade;
+                alunoRecuperado.Altura = aluno.Altura;
+                alunoRecuperado.Peso = aluno.Peso;
+                alunoRecuperado.Genero = aluno.Genero;
+
+                _context.SaveChanges();
+
+                return NoContent();
+            }
+
+            return NotFound();
         }
 
-        // DELETE api/<AlunosController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            Aluno aluno = _context.Alunos.FirstOrDefault(aluno => aluno.Id == id);
+
+            _context.Alunos.Remove(aluno);
+
+            _context.SaveChanges();
         }
     }
 }

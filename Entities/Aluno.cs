@@ -12,6 +12,7 @@ namespace WebServiceRestfull.Entities
         [Column("ID")]
         public int Id { get; set; }
         [Required(ErrorMessage = "Valor nome é obrigatório")]
+        [Column("NOME")]
         public string Nome { get; set; }
         [Column("IDADE")]
         public int Idade { get; set; }
