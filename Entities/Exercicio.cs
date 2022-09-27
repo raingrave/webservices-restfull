@@ -1,18 +1,28 @@
-﻿namespace WebServiceRestfull.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.PortableExecutable;
+using WebServiceRestfull.Enums;
 
+namespace WebServiceRestfull.Entities
 {
+    [Table("EXERCICIO")]
     public class Exercicio
     {
-        public int IdExercicio { get; set; }
-        public string NomeExercicio { set; get; }   
-        public string DescricaoExercicio { set; get; }
-        public DateTime RegistroExercicio { set; get; }
-        
-        public  Exercicio (string nome,string descricao, DateTime registro)
+        [Key]
+        [Column("ID")]
+        public int Id { get; set; }
+        [Required(ErrorMessage = "Valor nome é obrigatório")]
+        [Column("NOME")]
+        public string Nome { get; set; }
+        [Column("DESCRICAO")]
+        public string Descricao { get; set; }
+        [Column("REGISTRO")]
+        public DateTime Registro { get; set; }
+        public Exercicio(string nome,string descricao, DateTime registro)
         {
-            this.NomeExercicio = nome; 
-            this.DescricaoExercicio = descricao;
-            this.RegistroExercicio= registro;
+            this.Nome = nome;
+            this.Descricao = descricao;
+            this.Registro = registro;
         }
     }
 }

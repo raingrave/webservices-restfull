@@ -4,10 +4,10 @@ using WebServiceRestfull.Entities;
 
 namespace WebServiceRestfull.Data
 {
-    public class AlunoContext : DbContext
+    public class RecompensaContext : DbContext
     {
-     
-        /*public AlunoContext(DbContextOptions<AlunoContext> options) : base(options)
+
+        /*public RecompensaContext(DbContextOptions<RecompensaContext> options) : base(options)
         {
 
         }*/
@@ -17,6 +17,6 @@ namespace WebServiceRestfull.Data
             optionsBuilder.UseOracle(@"Data Source=(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.fiap.com.br)(PORT = 1521)))(CONNECT_DATA = (SID = ORCL)));Persist Security Info=True;User ID=RM92493;Password=240400;Pooling=True;Connection Timeout=60;");
         }
 
-        public DbSet<Aluno> Alunos { get; set; }
+        public DbSet<Recompensa> Recompensas { get; set; }
     }
 }

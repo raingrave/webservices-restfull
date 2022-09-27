@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebServiceRestfull.Data;
 using WebServiceRestfull.Entities;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using WebServiceRestfull.Enums;
 
 namespace WebServiceRestfull.Controllers
 {
@@ -9,41 +9,71 @@ namespace WebServiceRestfull.Controllers
     [ApiController]
     public class ExercicioController : ControllerBase
     {
-        // GET: api/<ExercicioController>
+        private ExercicioContext _context;
+
+        public ExercicioController()
+        {
+            _context = new ExercicioContext();
+        }
+
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult FindAll()
         {
-            List<Exercicio> exercicios = new List<Exercicio>
-            {
-             new Exercicio("Corrida", "Corrida em ritmo moderado", DateTime.Now),
-            };
-
-            return Ok (exercicios); 
+            return Ok(_context.Exercicios);
         }
 
-        // GET api/<ExercicioController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult FindById(int id)
         {
-            return "value";
+            Exercicio exercicio = _context.Exercicios.FirstOrDefault(exercicio => exercicio.Id == id);
+
+            if (exercicio != null)
+            {
+                return Ok(exercicio);
+            }
+
+            return NotFound();
         }
 
-        // POST api/<ExercicioController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Create([FromBody] Exercicio exercicio)
         {
+            exercicio.Registro = DateTime.Now;
+
+            _context.Exercicios.Add(exercicio);
+
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(FindById), new { Id = exercicio.Id }, exercicio);
         }
 
-        // PUT api/<ExercicioController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Update(int id, [FromBody] Exercicio exercicio)
         {
+            Exercicio exercicioRecuperado = _context.Exercicios.FirstOrDefault(exercicio => exercicio.Id == id);
+
+            if (exercicioRecuperado != null)
+            {
+                exercicioRecuperado.Nome = exercicio.Nome;
+                exercicioRecuperado.Descricao = exercicio.Descricao;
+                exercicioRecuperado.Registro = exercicio.Registro;
+
+                _context.SaveChanges();
+
+                return NoContent();
+            }
+
+            return NotFound();
         }
 
-        // DELETE api/<ExercicioController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            Exercicio exercicio = _context.Exercicios.FirstOrDefault(exercicio => exercicio.Id == id);
+
+            _context.Exercicios.Remove(exercicio);
+
+            _context.SaveChanges();
         }
     }
 }
