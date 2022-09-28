@@ -14,3 +14,5 @@ namespace WebServiceRestfull.Data
         public DbSet<Exercicio> Exercicios { get; set; }
     }
 }
+
+//Eu fiquei com dúvida nessa etapa da conexão com o banco, para todas entidades eu preciso criar um arquivo context ou tem a possibilidade de trabalhar com um arquivo para conectar todas as entidades
